@@ -3,15 +3,14 @@
 
 #include "problem.hpp"
 
-
 class queens : public problem{
 private:
-
-
+  int size;
 public:
-  queens(int n);
+  queens(int size);
+  ~queens();
   bool check_constraints();
-
+  void define_domains();
 };
 
 

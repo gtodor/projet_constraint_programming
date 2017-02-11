@@ -9,7 +9,7 @@ domaine::domaine(int size): list_val(size,0){
 
 
 domaine::domaine(const domaine& d): list_val(d.list_val){
-  cout<<"inside copy constructor"<<endl;
+  //cout<<"inside copy constructor"<<endl;
 }
 
 domaine::~domaine(){
@@ -25,7 +25,7 @@ int& domaine::operator[](unsigned int index){
 }
 
 domaine& domaine::operator=(domaine& other){
-  cout<<"inside operator="<<endl;
+  //cout<<"inside operator="<<endl;
   if(this == &other) return *this;
   this->remove_all();
   for(unsigned int i=0; i<other.size(); i++){

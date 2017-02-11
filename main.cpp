@@ -4,7 +4,8 @@
 #include "problem.hpp"
 #include "solver.hpp"
 
-//#include "domaine.hpp"
+#include "domaine.hpp"
+#include "node.hpp"
 
 using namespace std;
 
@@ -13,7 +14,7 @@ int main(){
   cout<<"size of board: n=";
   cin>>n;
 
-  /*
+  
   domaine d(n);
   cout<<"d = ";
   d.print_domaine();
@@ -49,14 +50,32 @@ int main(){
   cout<<"d = ";
   d.print_domaine();
 
-  domaine l(1);
+  domaine l(3);
+  l[0] = 5;
+  l[1] = 90;
+  l[2] = 45;
   cout<<"l = ";
   l.print_domaine();
 
   domaine m(0);
   cout<<"m = ";
   m.print_domaine();
-  */
+
+  node nd(2);
+  nd.print_node();
+  nd[0] = j;
+  nd[1] = d;
+  nd.print_node();
+
+  node nl(3);
+  nl[0] = d;
+  nl[1] = l;
+  nl[2] = j;
+  nl.print_node();
+
+  nl[1][0]=1000;
+  nl.print_node();
+  
 
   
   //problem* p = new queens(n);

@@ -11,6 +11,7 @@ public:
   ~queens();
   bool check_constraints();
   void define_domains();
+  void print_solutions();
 };
 
 

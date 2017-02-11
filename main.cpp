@@ -2,6 +2,7 @@
 #include <string>
 
 #include "problem.hpp"
+#include "queens.hpp"
 #include "solver.hpp"
 
 #include "domaine.hpp"
@@ -75,10 +76,16 @@ int main(){
 
   nl[1][0]=1000;
   nl.print_node();
-  
 
+  node nn = nl;
+  nl[2][3] = 1;
+  nn.print_node();
+  nl.print_node();
+
+  cout<<endl<<endl;
   
-  //problem* p = new queens(n);
+  problem* p = new queens(n);
+  p->print_solutions();
   //solver* s = new solver(p); // default prune algorithm -- backtracking
   //solver* s = new solver(p,"forward checking"); // prune algorithm fwd chk
   //s.solve();

@@ -12,10 +12,12 @@ public:
   domaine(const domaine& d);
   ~domaine();
 
-  const int& operator[](int index) const; //array like behaviour
-  int get_size();
-  void set_val(int index);
-  void set_all_val(std::vector<int> v);//maybe not necessarry
+  int& operator[](unsigned int index); //array like behaviour
+  domaine& operator=(domaine& other);
+  unsigned int size();
+  void remove(unsigned int index);
+  void remove_all();
+  void print_domaine();
 
 };
 

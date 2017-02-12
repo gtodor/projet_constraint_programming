@@ -2,13 +2,17 @@
 #define solver_hpp
 
 #include <string>
+#include <vector>
+#include "node.hpp"
 #include "prune.hpp"
 #include "problem.hpp"
 
 class solver{
 private:
-  prune* prune_algo;//what prune algoritm we want to use
   problem* p;// reference to the problem
+  prune* pr_alg;//what prune algoritm we want to use
+  std::string prune_algo;
+  std::vector<node> solutions;
 
 public:
   solver(problem* p);

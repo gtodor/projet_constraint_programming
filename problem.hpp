@@ -20,6 +20,8 @@ protected:
 public:
   problem(std::string name);
   virtual ~problem();
+  std::vector<domaine> get_domaines();
+  unsigned int nb_vars();
   virtual void define_domains()=0;
   virtual bool check_constraints(std::vector<domaine>& n)=0;
   virtual void print_solutions()=0;

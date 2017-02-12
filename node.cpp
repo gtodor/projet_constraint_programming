@@ -4,12 +4,13 @@
 using namespace std;
 
 
-node::node(int nr_vars) : domaines(nr_vars,domaine(0)){
+node::node(int nr_vars) : domaines(nr_vars,domaine(0)), solution(false){
   
 }
 
 node::node(const node& n) : domaines(n.domaines){
   cout<<"inside node copy constructor"<<endl;
+  solution = n.solution;
 }
 
 node& node::operator=(node& other){
@@ -40,4 +41,36 @@ void node::print_node(){
     cout<<" D"<<i<<" = ";
     (*this)[i].print_domaine();
   }
+}
+
+bool node::is_empty(){
+  unsigned int c=0;
+  for(unsigned int i=0; i<nb_vars();i++){
+    if(domaines[i].size() == 0) c++;
+  }
+  if(c == nb_vars()){
+    return true;
+  }else{
+    return false;
+  }
+}
+
+bool node::is_solution(){
+  return solution;
+}
+
+void node::set_solution(bool var){
+  solution = var;
+}
+
+unsigned int node::smallest_domaine(){
+  unsigned int min=0;
+  for(unsigned int i=0; i<nb_vars(); i++){
+    if(domaines[i].size() < domaines[min].size()) min = i;
+  }
+  return min;
+}
+
+vector<domaine> node::get_domaines(){
+  return domaines;
 }

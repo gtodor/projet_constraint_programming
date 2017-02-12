@@ -15,7 +15,7 @@ int main(){
   cout<<"size of board: n=";
   cin>>n;
 
-  
+  /*  
   domaine d(n);
   cout<<"d = ";
   d.print_domaine();
@@ -83,10 +83,12 @@ int main(){
   nl.print_node();
 
   cout<<endl<<endl;
+  */
   
   problem* p = new queens(n);
-  p->print_solutions();
-  //solver* s = new solver(p); // default prune algorithm -- backtracking
+  //p->print_solutions();
+  solver* s = new solver(p); // default prune algorithm -- backtracking
+  s->solve();
   //solver* s = new solver(p,"forward checking"); // prune algorithm fwd chk
   //s.solve();
   return 0;

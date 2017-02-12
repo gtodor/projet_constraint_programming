@@ -1,6 +1,7 @@
 #ifndef queens_hpp
 #define queens_hpp
 
+#include <vector>
 #include "problem.hpp"
 
 class queens : public problem{
@@ -9,7 +10,7 @@ private:
 public:
   queens(int size);
   ~queens();
-  bool check_constraints();
+  bool check_constraints(std::vector<domaine>& n);
   void define_domains();
   void print_solutions();
 };

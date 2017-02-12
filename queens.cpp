@@ -17,20 +17,14 @@ queens::~queens(){
   
 }
 
-bool queens::check_constraints(){
-  vector<int> partial;
-  for(int  i = 0; i < size; i++){
-    if(domaines[i].size() == 1){
-      partial.push_back(domaines[i][0]);
-    }else{
-      partial.push_back(-1);
-    }
-  }
-  if(partial.size() > 1){
-    for(int i=0; i<partial.size()-1;i++){
-      for(int j=i+1; j<partial.size(); j++){
-	if(partial[i] == partial[j]) return false;
-	else if((partial[j] - partial[i]) == (j-i)) return false;
+/*this method is called by the prune algorithm to check constraintes for a specific node
+ */
+bool queens::check_constraints(vector<domaine>& n){
+  for(unsigned int i=0; i<n.size()-1;i++){
+    for(unsigned int j=i; j<n.size(); j++){
+      if(n[i].size() == 1 && n[j].size() == 1){
+	if(n[i][0] == n[j][0]) return false;
+	else if((n[j][0] - n[i][0]) == (j-i) ) return false;
       }
     }
   }

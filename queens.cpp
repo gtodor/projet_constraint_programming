@@ -6,11 +6,7 @@ using namespace std;
 
 
 queens::queens(int size): problem("queens"), size(size){
-  for(int i=0; i<size; i++){
-    domaine d(size);
-    for(int j=0;j<size;j++) d[j] = j;
-    domaines.push_back(d);
-  }
+  define_domains();
 }
 
 queens::~queens(){
@@ -32,8 +28,11 @@ bool queens::check_constraints(vector<domaine>& n){
 }
 
 void queens::define_domains(){
-  
-
+  for(int i=0; i<size; i++){
+    domaine d(size);
+    for(int j=0;j<size;j++) d[j] = j;
+    domaines.push_back(d);
+  }
 }
 
 //TO REDO --- it should print the solution NOT the domains

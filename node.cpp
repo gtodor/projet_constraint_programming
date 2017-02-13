@@ -9,12 +9,10 @@ node::node(int nr_vars) : domaines(nr_vars,domaine(0)), solution(false){
 }
 
 node::node(const node& n) : domaines(n.domaines){
-  //cout<<"inside node copy constructor"<<endl;
   solution = n.solution;
 }
 
 node& node::operator=(node& other){
-  //cout<<"inside node::operator="<<endl;
   if(this == &other) return *this;
   domaines.erase(domaines.begin(), domaines.end());
   for(unsigned int i=0; i<other.nb_vars(); i++){
@@ -24,7 +22,6 @@ node& node::operator=(node& other){
 }
 
 domaine& node::operator[](unsigned int index){
-  //cout<<"inside node::operator[] "<<endl;
   if(index >= domaines.size()){
     throw std::invalid_argument("index out of bounds");
   }
@@ -74,7 +71,7 @@ unsigned int node::smallest_domaine(){
     }
   }
   if(!found){
-    
+    return -2;
   }
   for(unsigned int i=0; i<nb_vars(); i++){
     if(domaines[i].size() > 1 && domaines[i].size() < domaines[min].size()) min = i;

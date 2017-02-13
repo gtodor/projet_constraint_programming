@@ -60,7 +60,7 @@ void node::set_solution(bool var){
   solution = var;
 }
 
-unsigned int node::smallest_domaine(){
+int node::smallest_domaine(){
   unsigned int min;
   bool found = false;
   for(unsigned int j=0;j<nb_vars(); j++){

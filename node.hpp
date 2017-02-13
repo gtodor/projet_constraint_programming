@@ -55,7 +55,7 @@ public:
    *return the index of the smallest domain in the node that has not a size of 1
    *if there is no such index (all domains have a size of 1) it returns a negative number irrelevant to the problem
    */
-  unsigned int smallest_domaine();
+  int smallest_domaine();
 
   /*
    *return domaines

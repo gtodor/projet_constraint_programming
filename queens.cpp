@@ -14,8 +14,6 @@ queens::~queens(){
   
 }
 
-/*this method is called by the prune algorithm to check constraintes for a specific node
- */
 bool queens::check_constraints(vector<domaine>& n){
   for(unsigned int i=0; i<n.size()-1;i++){
     for(unsigned int j=i+1; j<n.size(); j++){
@@ -33,12 +31,5 @@ void queens::define_domains(){
     domaine d(size);
     for(int j=0;j<size;j++) d[j] = j;
     domaines.push_back(d);
-  }
-}
-
-//TO REDO --- it should print the solution NOT the domains
-void queens::print_solutions(){
-  for(int i=0; i<size ; i++){
-    domaines[i].print_domaine();
   }
 }

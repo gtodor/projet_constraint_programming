@@ -89,6 +89,7 @@ int main(){
   //p->print_solutions();
   solver* s = new solver(p); // default prune algorithm -- backtracking
   s->solve();
+  s->show_solutions();
   //solver* s = new solver(p,"forward checking"); // prune algorithm fwd chk
   //s.solve();
   return 0;

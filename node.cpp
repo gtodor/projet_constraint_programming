@@ -9,12 +9,12 @@ node::node(int nr_vars) : domaines(nr_vars,domaine(0)), solution(false){
 }
 
 node::node(const node& n) : domaines(n.domaines){
-  cout<<"inside node copy constructor"<<endl;
+  //cout<<"inside node copy constructor"<<endl;
   solution = n.solution;
 }
 
 node& node::operator=(node& other){
-  cout<<"inside node::operator="<<endl;
+  //cout<<"inside node::operator="<<endl;
   if(this == &other) return *this;
   domaines.erase(domaines.begin(), domaines.end());
   for(unsigned int i=0; i<other.nb_vars(); i++){
@@ -64,9 +64,20 @@ void node::set_solution(bool var){
 }
 
 unsigned int node::smallest_domaine(){
-  unsigned int min=0;
+  unsigned int min;
+  bool found = false;
+  for(unsigned int j=0;j<nb_vars(); j++){
+    if(domaines[j].size() > 1){
+      min = j;
+      found = true;
+      break;
+    }
+  }
+  if(!found){
+    
+  }
   for(unsigned int i=0; i<nb_vars(); i++){
-    if(domaines[i].size() < domaines[min].size()) min = i;
+    if(domaines[i].size() > 1 && domaines[i].size() < domaines[min].size()) min = i;
   }
   return min;
 }

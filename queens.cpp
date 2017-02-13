@@ -17,7 +17,7 @@ queens::~queens(){
  */
 bool queens::check_constraints(vector<domaine>& n){
   for(unsigned int i=0; i<n.size()-1;i++){
-    for(unsigned int j=i; j<n.size(); j++){
+    for(unsigned int j=i+1; j<n.size(); j++){
       if(n[i].size() == 1 && n[j].size() == 1){
 	if(n[i][0] == n[j][0]) return false;
 	else if((n[j][0] - n[i][0]) == (j-i) ) return false;

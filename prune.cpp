@@ -22,15 +22,12 @@ void prune::simple_prune(node& n){
       break;
     }
   }
-  //cout<<"all1? : "<<all1<<endl;
   for(unsigned int i=0; i<n.nb_vars(); i++){
     if(n[i].size() == 0){
       domaine_null=true;
       break;
     }
   }
-  //cout<<"domaine null? :"<<domaine_null<<endl;
-  //cout<<"sat? : "<<sat<<endl;
   if(all1 && sat){
     n.set_solution(true);
   }

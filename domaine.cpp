@@ -9,7 +9,7 @@ domaine::domaine(int size): list_val(size,0){
 
 
 domaine::domaine(const domaine& d): list_val(d.list_val){
-  //cout<<"inside copy constructor"<<endl;
+  
 }
 
 domaine::~domaine(){
@@ -18,14 +18,12 @@ domaine::~domaine(){
 
 int& domaine::operator[](unsigned int index){
   if(index >= list_val.size()){
-    cerr<<"index out of bounds"<<endl;
     throw std::invalid_argument("index out of bounds");
   }
   return list_val[index];
 }
 
 domaine& domaine::operator=(domaine& other){
-  //cout<<"inside operator="<<endl;
   if(this == &other) return *this;
   this->remove_all();
   for(unsigned int i=0; i<other.size(); i++){
@@ -44,8 +42,7 @@ void domaine::remove_all(){
 
 void domaine::remove(unsigned int index){
   if(index >= list_val.size()){
-    cerr<<"index out of bounds"<<endl;
-    return;
+    throw std::invalid_argument("index out of bounds");
   }
   list_val.erase(list_val.begin()+index);
 }

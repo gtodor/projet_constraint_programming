@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include "queens.hpp"
+#include <cmath>
 
 using namespace std;
 
@@ -20,7 +21,7 @@ bool queens::check_constraints(vector<domaine>& n){
     for(unsigned int j=i+1; j<n.size(); j++){
       if(n[i].size() == 1 && n[j].size() == 1){
 	if(n[i][0] == n[j][0]) return false;
-	else if((n[j][0] - n[i][0]) == (j-i) ) return false;
+	else if(abs(n[j][0] - n[i][0]) == abs(j-i) ) return false;
       }
     }
   }

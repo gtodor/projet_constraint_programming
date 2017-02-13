@@ -28,7 +28,6 @@ string solver::get_prune_algos(){
 }
 
 void solver::solve(){
-  cout<<"inside solver::solve() method"<<endl;
   vector<node> nodes;
   node n1(p->nb_vars());
   for(unsigned int i=0; i<p->nb_vars();i++){
@@ -37,38 +36,35 @@ void solver::solve(){
   nodes.push_back(n1);
   while(!nodes.empty()){
     node nfirst = nodes[0];
-    //nfirst.print_node();
     nodes.erase(nodes.begin());
-    //nfirst.print_node();
     pr_alg->simple_prune(nfirst);//just check constraints
-    //nfirst.print_node();
     if(!nfirst.is_empty()){
       if(nfirst.is_solution()){
-	cout<<"nfirst is solution"<<endl;
 	solutions.push_back(nfirst);
       }else{
-	unsigned int min = nfirst.smallest_domaine();
-	cout<<"min = "<<min<<endl;
+	int min = nfirst.smallest_domaine();
+	if(min == -2){
+	  continue;
+	}
 	for(unsigned int i=0; i<nfirst[min].size(); i++){
 	  node ncopy = nfirst;
 	  ncopy[min].remove_all();
 	  domaine d(1);
 	  d[0] = nfirst[min][i];
 	  ncopy[min] = d;
-	  //ncopy.print_node();
 	  nodes.push_back(ncopy);
 	}
       }
     }
     else{
-      cout<<"node is discarded"<<endl;
+      
     }
   }
 }
 
 void solver::show_solutions(){
-  cout<<endl<<endl<<"LIST SOLUTIONS: "<<endl;
-  for(int i=0;i<solutions.size();i++){
+  cout<<"LIST SOLUTIONS: "<<endl;
+  for(unsigned int i=0;i<solutions.size();i++){
     solutions[i].print_node();
   }
 }

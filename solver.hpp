@@ -19,16 +19,26 @@ public:
   solver(problem* p, std::string prune_algo);
   ~solver();
 
-  //return implemented prune algorithm names 
+  /*
+   *return the name of prune algorithms implemented
+   */
+  //TODO need to be static
   std::string get_prune_algos();
 
-  //resolvs the problem by branch and prune algorithm
+  /*
+   *solves the problem using a branch and prune algorithm
+   *the algorithm is implemented by following the pseudo-code from the project subject
+   */
   void solve();
 
-  //finds the next solution from current state  
+  /*
+   *finds the next solution from the current state of the variables/domains
+   */
   void step_solve();
 
-  //print the solutions of the problem
+  /*
+   *prints the solutions of the problem
+   */
   void show_solutions();
   
 };

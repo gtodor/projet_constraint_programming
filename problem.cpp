@@ -13,7 +13,7 @@ problem::~problem(){
 
 }
 
-vector<domaine> problem::get_domaines(){
+vector<domaine>& problem::get_domaines(){
   return domaines;
 }
 

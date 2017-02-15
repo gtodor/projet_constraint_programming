@@ -22,7 +22,7 @@ public:
   /*
    *return domaines
    */
-  std::vector<domaine> get_domaines();
+  std::vector<domaine>& get_domaines();
 
   /*
    *return number of variables of the problem

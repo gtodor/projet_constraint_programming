@@ -16,7 +16,7 @@ public:
    *param[in] the number of varibles of the problem
    *at initialization the node contains nr_vars empty domains
    */
-  node(int nr_vars);
+  node(std::vector<domaine>& domaines);
 
   node(const node& n);
   /*
@@ -60,7 +60,7 @@ public:
   /*
    *return domaines
    */
-  std::vector<domaine> get_domaines();
+  std::vector<domaine>& get_domaines();
   
 };
 

@@ -30,10 +30,7 @@ string solver::get_prune_algos(){
 
 void solver::solve(){
   stack<node> nodes;
-  node n1(p->nb_vars());
-  for(unsigned int i=0; i<p->nb_vars();i++){
-    n1[i] = (p->get_domaines())[i];
-  }
+  node n1(p->get_domaines());
   nodes.push(n1);
   while(!nodes.empty()){
     node nfirst = nodes.top();

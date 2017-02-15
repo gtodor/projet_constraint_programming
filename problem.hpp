@@ -38,6 +38,6 @@ public:
    *should be implemented by each child class
    */ 
   virtual bool check_constraints(std::vector<domaine>& n)=0;
-};
+}; 
 
 #endif //problem_hpp

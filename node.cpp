@@ -4,7 +4,7 @@
 using namespace std;
 
 
-node::node(int nr_vars) : domaines(nr_vars,domaine(0)), solution(false){
+node::node(int nr_vars) : domaines(nr_vars,domaine()), solution(false){
   
 }
 

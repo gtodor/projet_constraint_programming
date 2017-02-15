@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <stack>
 #include "solver.hpp"
 #include "domaine.hpp"
 #include "node.hpp"
@@ -28,16 +29,17 @@ string solver::get_prune_algos(){
 }
 
 void solver::solve(){
-  vector<node> nodes;
+  stack<node> nodes;
   node n1(p->nb_vars());
   for(unsigned int i=0; i<p->nb_vars();i++){
     n1[i] = (p->get_domaines())[i];
   }
-  nodes.push_back(n1);
+  nodes.push(n1);
   while(!nodes.empty()){
-    node nfirst = nodes[0];
-    nodes.erase(nodes.begin());
-    pr_alg->simple_prune(nfirst);//just check constraints
+    node nfirst = nodes.top();
+    //nodes.erase(nodes.begin());
+    nodes.pop();
+    pr_alg->simple_prune(nfirst);//just check the constraints
     if(!nfirst.is_empty()){
       if(nfirst.is_solution()){
 	solutions.push_back(nfirst);
@@ -46,13 +48,14 @@ void solver::solve(){
 	if(min == -2){
 	  continue;
 	}
-	for(unsigned int i=0; i<nfirst[min].size(); i++){
+	unsigned int sz = nfirst[min].size();
+	for(unsigned int i=0; i<sz; i++){
 	  node ncopy = nfirst;
-	  ncopy[min].remove_all();
-	  domaine d(1);
-	  d[0] = nfirst[min][i];
+	  domaine d;
+	  d.push_back(nfirst[min].head());
 	  ncopy[min] = d;
-	  nodes.push_back(ncopy);
+	  nfirst[min].pop_front();
+	  nodes.push(ncopy);
 	}
       }
     }

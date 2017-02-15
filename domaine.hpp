@@ -1,21 +1,21 @@
 #ifndef domaine_hpp
 #define domaine_hpp
 
-#include <vector>
+#include <list>
 
 /*
  *class defining the domain data structure
  */
 class domaine{
 private:
-  std::vector<int> list_val;
-
+  std::list<int> list_val;
+  
 public:
   /*
    *param[in] size of the domain
    *the domain is initialized with 0 values
    */
-  domaine(int size);
+  domaine();
 
   domaine(const domaine& d);
   ~domaine();
@@ -24,8 +24,14 @@ public:
    *with this operator we can access values of list_val directly from domain variable
    *ex : domaine d(2); d[0] = 1; d[1] = 2;
    */
-  int& operator[](unsigned int index); //array like behaviour
+  int& operator[](unsigned int index);
 
+
+  int head();
+
+  
+  std::list<int>::iterator begin();
+  std::list<int>::iterator end();
   /*
    *assignement operator used to deep copy from other to this domain
    */
@@ -34,7 +40,11 @@ public:
   /*
    *return size of list_val
    */
-  unsigned int size();
+  unsigned int size() const;
+
+  void push_front(int val);
+  void push_back(int val);
+  void pop_front();
 
   /*
    *removes the element at index index; size of domain decrease by 1

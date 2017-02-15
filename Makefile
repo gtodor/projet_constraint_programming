@@ -1,7 +1,7 @@
 all: solver
 
 solver: main.cpp domaine.cpp problem.cpp queens.cpp node.cpp prune.cpp solver.cpp
-	g++ -Wall -Wextra -o $@ $^
+	g++ -Wall -Wextra -O3 -o $@ $^
 
 domaine.cpp: domaine.hpp
 problem.cpp : problem.hpp

@@ -34,10 +34,11 @@ int domaine::head(){
 
 domaine& domaine::operator=(domaine& other){
   if(this == &other) return *this;
-  list_val.erase(list_val.begin(), list_val.end());
-  for(list<int>::iterator it = other.begin(); it!=other.end(); ++it){
-    list_val.push_back(*it);
-  }
+  // list_val.erase(list_val.begin(), list_val.end());
+  // for(list<int>::iterator it = other.begin(); it!=other.end(); ++it){
+  //   list_val.push_back(*it);
+  // }
+  list_val = other.list_val;
   return *this;
 }
 

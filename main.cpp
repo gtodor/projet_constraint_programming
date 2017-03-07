@@ -16,6 +16,6 @@ int main(){
   solver* s = new solver(p); // default prune algorithm -- backtracking
   s->solve();
   s->show_solutions();
-  //solver* s = new solver(p,"forward checking"); // prune algorithm fwd chk
+  //solver* s = new solver(p,new forward_checking() ); // prune algorithm fwd chk
   return 0;
 }

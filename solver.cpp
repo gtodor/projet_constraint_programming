@@ -4,29 +4,23 @@
 #include "solver.hpp"
 #include "domaine.hpp"
 #include "node.hpp"
+#include "backtracking.hpp"
+
 
 using namespace std;
 
-solver::solver(problem* p): p(p), pr_alg(new prune(p)), prune_algo("backtracking"){
-
+solver::solver(problem* p): p(p), pr_algo(new backtracking(p)){
 }
 
-solver::solver(problem* p, string prune_algo): p(p), pr_alg(new prune(p)){
-if(get_prune_algos().find(prune_algo) == string::npos){
-  throw std::invalid_argument("this prune_algo does not exist: use get_prune_algos for list of implemented prune algorithms");
- }else{
-  this->prune_algo = prune_algo;
- }
+solver::solver(problem* p, prune* prune_algo): p(p), pr_algo(prune_algo){
+  
 }
 
 solver::~solver(){
-  delete pr_alg;
+  delete pr_algo;
   delete p;
 }
 
-string solver::get_prune_algos(){
-  return "backtracking;";
-}
 
 void solver::solve(){
   stack<node> nodes;
@@ -36,7 +30,7 @@ void solver::solve(){
     node nfirst = nodes.top();
     //nodes.erase(nodes.begin());
     nodes.pop();
-    pr_alg->simple_prune(nfirst);//just check the constraints
+    pr_algo->prunning(nfirst);//just check the constraints
     if(!nfirst.is_empty()){
       if(nfirst.is_solution()){
 	solutions.push_back(nfirst);

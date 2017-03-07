@@ -2,6 +2,7 @@
 #define problem_hpp
 
 #include <vector>
+#include <string>
 #include "domaine.hpp"
 
 /*

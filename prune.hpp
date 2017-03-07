@@ -8,19 +8,19 @@
  *class that contains prune methods for use in branchAndPrune algorithm 
  */
 class prune{
-private:
+protected:
   problem* p;
   
 public:
   prune(problem* p);
-  ~prune();
+  virtual ~prune();
 
   /*
    *method that only checks the constraints
    *param[in] reference to a node
    *if the constraints are satisfied and all domains size equal 1 this method sets the variable solution in node to true; else it empties the node
    */
-  void simple_prune(node& n);  
+  virtual void prunning(node& n)=0;  
   
 };
 

@@ -10,20 +10,14 @@
 class solver{
 private:
   problem* p;// reference to the problem
-  prune* pr_alg;//what prune algoritm we want to use
-  std::string prune_algo;
+  prune* pr_algo;//what prune algoritm we want to use
   std::vector<node> solutions;
 
 public:
   solver(problem* p);
-  solver(problem* p, std::string prune_algo);
+  solver(problem* p, prune* prune_algo);
   ~solver();
 
-  /*
-   *return the name of prune algorithms implemented
-   */
-  //TODO need to be static
-  std::string get_prune_algos();
 
   /*
    *solves the problem using a branch and prune algorithm

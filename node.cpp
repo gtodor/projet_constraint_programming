@@ -24,7 +24,7 @@ node& node::operator=(node& other){
 }
 
 bool node::operator==(node& other){
-  if(this==other){
+  if(this== &other){
     return true;
   } 
   if(nb_vars() == other.nb_vars()){
@@ -32,7 +32,7 @@ bool node::operator==(node& other){
    } else {
       return false;
    }
-   for (int i = 0; i < nb_vars(); ++i)
+   for (unsigned int i = 0; i < nb_vars(); ++i)
    {
      if(!((*this)[i] == other[i])) {
         return false;

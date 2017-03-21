@@ -36,6 +36,10 @@ public:
    *assignement operator used to deep copy from other to this domain
    */
   domaine& operator=(domaine& other);
+  /*
+   *compare two domaine
+   */
+  bool operator==(domaine& other);
 
   /*
    *return size of list_val

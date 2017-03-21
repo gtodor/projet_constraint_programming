@@ -42,6 +42,24 @@ domaine& domaine::operator=(domaine& other){
   return *this;
 }
 
+bool domaine::operator==(domaine& other){
+
+   if(this == other) return true;
+   if(size() == other.size()){
+      return true;
+   } else {
+      return false;
+   }
+
+   for (int i = 0; i < size(); ++i)
+   {
+     if(!((*this)[i] == other[i])) {
+        return false;
+     }
+   }
+   return true;
+}
+
 unsigned int domaine::size() const{
   return list_val.size();
 }

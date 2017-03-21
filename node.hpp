@@ -24,6 +24,10 @@ public:
    */
   node& operator=(node& other);
   /*
+   *compare two node
+   */
+  bool operator==(node& other);
+  /*
    * we can acess each domain of the node like an array
    * ex: node n(3); n[1] represents the 2nd domain of the node
    */

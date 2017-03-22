@@ -18,7 +18,7 @@ domaine::~domaine(){
 
 
 int& domaine::operator[](unsigned int index){
-  cout<<"domaine::operator[](unsigned int index)"<<endl;
+  //cout<<"domaine::operator[](unsigned int index)"<<endl;
   if(index >= list_val.size()){
     throw std::invalid_argument("index out of bounds");
   }
@@ -67,7 +67,7 @@ void domaine::remove_all(){
 }
 
 void domaine::remove(unsigned int index){
-  cout<<"domaine::remove(unsigned int index)"<<endl;
+  //cout<<"domaine::remove(unsigned int index)"<<endl;
   if(index >= list_val.size()){
     throw std::invalid_argument("index out of bounds");
   }
@@ -81,14 +81,15 @@ void domaine::pop_front(){
 }
 
 void domaine::print_domaine(){
+  list<int> temp = list_val;
   cout<<"{ ";
-  if(!list_val.empty()){
-    cout<<list_val.front();
-    list_val.pop_front();
+  if(!temp.empty()){
+    cout<<temp.front();
+    temp.pop_front();
   }
-  while(!list_val.empty()){
-    cout<<" , "<<list_val.front();
-    list_val.pop_front();
+  while(!temp.empty()){
+    cout<<" , "<<temp.front();
+    temp.pop_front();
   }
   cout<<" }"<<endl;
 }

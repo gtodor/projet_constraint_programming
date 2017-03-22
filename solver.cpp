@@ -30,7 +30,9 @@ void solver::solve(){
     node nfirst = nodes.top();
     //nodes.erase(nodes.begin());
     nodes.pop();
-    pr_algo->prunning(nfirst);//just check the constraints
+    //nfirst.print_node();
+    pr_algo->prunning(nfirst);
+    //nfirst.print_node();
     if(!nfirst.is_empty()){
       if(nfirst.is_solution()){
 	solutions.push_back(nfirst);

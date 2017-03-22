@@ -1,6 +1,6 @@
 all: solver
 
-solver: main.cpp domaine.cpp problem.cpp queens.cpp node.cpp prune.cpp solver.cpp backtracking.cpp
+solver: main.cpp domaine.cpp problem.cpp queens.cpp node.cpp prune.cpp solver.cpp backtracking.cpp forward_checking.cpp
 	g++ -Wall -Wextra -O3 -o $@ $^
 
 domaine.cpp: domaine.hpp
@@ -10,6 +10,7 @@ node.cpp: node.hpp
 prune.cpp: prune.hpp
 solver.cpp:solver.hpp
 backtracking.cpp:backtracking.hpp
+forward_checking.cpp: forward_checking.hpp
 
 PHONY: clean
 

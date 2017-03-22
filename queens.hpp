@@ -22,6 +22,8 @@ public:
    *Each variable has the same domain {0,1,...,size}
    */
   void define_domains();
+
+  bool check_constraints(int val1, int ind1, int val2, int ind2);
 };
 
 

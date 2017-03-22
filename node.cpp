@@ -23,6 +23,24 @@ node& node::operator=(node& other){
   return *this;
 }
 
+bool node::operator==(node& other){
+  if(this== &other){
+    return true;
+  } 
+  if(nb_vars() == other.nb_vars()){
+      return true;
+   } else {
+      return false;
+   }
+   for (unsigned int i = 0; i < nb_vars(); ++i)
+   {
+     if(!((*this)[i] == other[i])) {
+        return false;
+     }
+   }
+   return true;
+}
+
 domaine& node::operator[](unsigned int index){
   if(index >= domaines.size()){
     throw std::invalid_argument("index out of bounds");

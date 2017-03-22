@@ -8,9 +8,9 @@ public:
   arcConsistency(problem* p);
   ~arcConsistency();
 
+  void reviseAC(domaine& Di, domaine& Dj);
+  bool HasSupport(int ai, int indai, domaine dj );
   void prunning(node& n);
-  bool HasSupport(node& n );
-  void arcConsistency::AC1(node& n);
 };
 
 

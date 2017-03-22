@@ -17,13 +17,13 @@ public:
    *We use the discrete model to represent the n queens problem. The variable X1 represents for example the column where we should place the 1st queen. 
    */
   bool check_constraints(std::vector<domaine>& n);
+
+  bool check_constraints(int ai, int indai, int aj, int indaj );
   
   /*
    *Each variable has the same domain {0,1,...,size}
    */
   void define_domains();
-
-  bool check_constraints(int val1, int ind1, int val2, int ind2);
 };
 
 

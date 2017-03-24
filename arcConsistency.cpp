@@ -12,19 +12,20 @@ arcConsistency::~arcConsistency(){
   
 }
 
-void arcConsistency::reviseAC(domaine& Di, domaine& Dj){
+void arcConsistency::reviseAC(domaine& Di,int indi, domaine& Dj, int indj){
   //c(xi,xj):constraint, Di:domain, Dj:domaine
   for(unsigned int i =0; i<Di.size(); ++i){
-     if(!HasSupport(Di[i], i, Dj)){
+    if(!HasSupport(Di[i], indi, Dj, indj)){
       //remove ai from Di
       Di.remove(i);  
     }
   }
 }
 
-bool arcConsistency::HasSupport(int ai,int indai, domaine dj ){
+bool arcConsistency::HasSupport(int ai,int indai, domaine dj, int indj){
   for(unsigned int i =0; i<dj.size(); ++i){
-    if(p->check_constraints(ai, indai, dj[i], i)){
+    if(p->check_constraints(ai, indai, dj[i], indj)){
+      //cout<<"var"<<indai<<"= "<<ai<<" and var"<<indj<<"= "<<dj[i]<<" satisfy the constraints"<<endl;
       return true;
     }
   }
@@ -55,20 +56,20 @@ void arcConsistency::prunning(node& n){
     n.set_solution(true);
   }
   if(!all1 && sat && !domaine_null){
-    bool modified = false;
+    bool modified = true;
     domaine Ei, Ej;
-    modified = false;
-    while(!modified){
+    //modified = false;
+    while(modified == true){
       modified = false;
       for(unsigned int i=0; i<n.nb_vars()-1;i++){
         for(unsigned int j=i+1; j<n.nb_vars(); j++){
           Ei = n[i];
           Ej = n[j];
-          reviseAC(n[i], n[j]); // (c(xi,xj),Di,Dj)
-          reviseAC(n[j], n[i]); // (c(xj,xi),Dj,Di)
-          if(!(Ei == n[i])){
-            modified = true;
-          } else if(!(Ej == n[j])) {
+	  //cout<<"checking domains "<<i<<" and "<<j<<endl;
+          reviseAC(n[i], i, n[j], j); // (c(xi,xj),Di,Dj)
+	  //cout<<"checking domains "<<j<<" and "<<i<<endl;
+          reviseAC(n[j], j, n[i], i); // (c(xj,xi),Dj,Di)
+          if(!(Ei == n[i] && Ej == n[j])){
             modified = true;
           }
         }// else modified = modified;

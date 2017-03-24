@@ -48,6 +48,7 @@ void solver::solve(){
 	  d.push_back(nfirst[min].head());
 	  ncopy[min] = d;
 	  nfirst[min].pop_front();
+	  ncopy.print_node();
 	  nodes.push(ncopy);
 	}
       }

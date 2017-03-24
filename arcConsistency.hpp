@@ -8,8 +8,8 @@ public:
   arcConsistency(problem* p);
   ~arcConsistency();
 
-  void reviseAC(domaine& Di, domaine& Dj);
-  bool HasSupport(int ai, int indai, domaine dj );
+  void reviseAC(domaine& Di, int indi, domaine& Dj, int indj);
+  bool HasSupport(int ai, int indai, domaine dj, int indj );
   void prunning(node& n);
 };
 

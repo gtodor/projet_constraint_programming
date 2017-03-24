@@ -43,19 +43,18 @@ domaine& domaine::operator=(domaine& other){
 }
 
 bool domaine::operator==(domaine& other){
-   if(this == &other) return true;
-   if(size() == other.size()){
-      return true;
-   } else {
+  //cout<<"inside domaine::operator=="<<endl;
+  if(this == &other) return true;
+  if(size() != other.size()){
+    return false;
+  }
+  
+  for (unsigned int i = 0; i < size(); ++i) {
+    if(!((*this)[i] == other[i])) {
       return false;
-   }
-
-   for (unsigned int i = 0; i < size(); ++i) {
-     if(!((*this)[i] == other[i])) {
-        return false;
-     }
-   }
-   return true;
+    }
+  }
+  return true;
 }
 
 unsigned int domaine::size() const{

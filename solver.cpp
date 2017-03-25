@@ -1,11 +1,13 @@
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <stack>
+#include <cstdio>
+#include <ctime>
 #include "solver.hpp"
 #include "domaine.hpp"
 #include "node.hpp"
 #include "backtracking.hpp"
-
 
 using namespace std;
 
@@ -23,6 +25,9 @@ solver::~solver(){
 
 
 void solver::solve(){
+  clock_t start;
+  start = clock();
+  
   stack<node> nodes;
   node n1(p->get_domaines());
   nodes.push(n1);
@@ -48,7 +53,6 @@ void solver::solve(){
 	  d.push_back(nfirst[min].head());
 	  ncopy[min] = d;
 	  nfirst[min].pop_front();
-	  ncopy.print_node();
 	  nodes.push(ncopy);
 	}
       }
@@ -57,11 +61,28 @@ void solver::solve(){
       
     }
   }
+  execution_time = (clock() - start)/(double)CLOCKS_PER_SEC;
 }
 
 void solver::show_solutions(){
-  cout<<"LIST SOLUTIONS: "<<endl;
-  for(unsigned int i=0;i<solutions.size();i++){
-    solutions[i].print_node();
+  if(solutions.size() < 10000){
+    ofstream myfile;
+    myfile.open("solutions.txt",ios::trunc);
+    cout<<"LIST SOLUTIONS: "<<endl;
+    for(unsigned int i=0;i<solutions.size();i++){
+      solutions[i].print_node();
+      myfile << solutions[i].to_string();
+    }
+    myfile.close();
+    cout<<"There are "<<solutions.size()<<" solutions"<<endl;
+  }else{
+    cout<<"Too many solutions ("<<solutions.size()<<"): Find them in file 'solutions.txt' "<<endl;
+    ofstream myfile;
+    myfile.open("solutions.txt",ios::trunc);
+    for(unsigned int i = 0; i<solutions.size(); i++){
+      myfile << solutions[i].to_string();
+    }
+    myfile.close();
   }
+  cout<<"the algorithm took "<<execution_time<<" sec"<<endl;
 }

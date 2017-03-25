@@ -12,6 +12,7 @@ private:
   problem* p;// reference to the problem
   prune* pr_algo;//what prune algoritm we want to use
   std::vector<node> solutions;
+  double execution_time;
 
 public:
   solver(problem* p);

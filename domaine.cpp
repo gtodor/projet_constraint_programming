@@ -1,4 +1,5 @@
 #include <iostream>
+#include <sstream>
 #include "domaine.hpp"
 
 using namespace std;
@@ -109,5 +110,20 @@ void domaine::print_domaine(){
   cout<<" }"<<endl;
 }
 
-
+string domaine::to_string(){
+  list<int> temp = list_val;
+  stringstream res;
+  res << "{ ";
+  if(!temp.empty()){
+    res << temp.front();
+    temp.pop_front();
+  }
+  while(!temp.empty()){
+    res << " , ";
+    res << temp.front();
+    temp.pop_front();
+  }
+  res << " }";
+  return res.str();
+}
     

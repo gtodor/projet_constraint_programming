@@ -102,3 +102,13 @@ int node::smallest_domaine(){
 vector<domaine>& node::get_domaines(){
   return domaines;
 }
+
+string node::to_string(){
+  string res;
+  res = "NODE:\n";
+  for(unsigned int i=0; i<domaines.size(); i++){
+    res += domaines[i].to_string();
+    res += "\n";
+  }
+  return res;
+}

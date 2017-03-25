@@ -2,6 +2,7 @@
 #define node_hpp
 
 #include <vector>
+#include <string>
 #include "domaine.hpp"
 
 /*
@@ -65,6 +66,8 @@ public:
    *return domaines
    */
   std::vector<domaine>& get_domaines();
+
+  std::string to_string();
   
 };
 

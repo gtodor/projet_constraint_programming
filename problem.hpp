@@ -29,6 +29,11 @@ public:
    *return number of variables of the problem
    */
   unsigned int nb_vars();
+
+  /*
+   *print the domains of the problem
+   */
+  void print_problem();
   /*
    *defines the domains of each variable in the problem
    *should be implemented by each child class
@@ -41,7 +46,7 @@ public:
   virtual bool check_constraints(std::vector<domaine>& n)=0;
 
 
-  virtual bool check_constraints(int ai, int indai, int aj, int indaj ) = 0;
+  virtual bool check_constraints(int ai, int indai, int aj, int indaj) = 0;
 }; 
 
 #endif //problem_hpp

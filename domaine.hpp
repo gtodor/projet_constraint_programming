@@ -2,7 +2,7 @@
 #define domaine_hpp
 
 #include <list>
-
+#include <string>
 /*
  *class defining the domain data structure
  */
@@ -64,6 +64,8 @@ public:
    *print the domain
    */
   void print_domaine();
+
+  std::string to_string();
 
 };
 
